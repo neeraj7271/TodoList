@@ -1,0 +1,54 @@
+<%- include("partials/header.ejs") %>
+
+
+<div class="container">
+    <nav>
+        <div class="navbar">
+            <li>
+                <i class="fa fa-calendar"></i>
+                <a href="/">Today</a>
+            </li>
+            <li>
+                <i class="fa fa-paste"></i>
+                <a href="/work">Work</a>
+            </li>
+        </div>
+    </nav>
+
+
+    <div class="todo-content">
+
+        <div class="title-form-container">
+            <div class="content-title">
+                Work List
+            </div>
+            <div class="form-input">
+                <form action="/work" method="post">
+                    <input type="text" name="work-item" placeholder="Enter a new item" required>
+                        <button type="submit" name="button">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="list-container">
+
+                <form action="/" method="post">
+
+                    <div class="list-item">
+                        <% if (locals.work) { %>
+                            <% for(var i=0; i<work.length; i++) { %>
+                                <input class="checkbox" onclick="addItems()" type="checkbox" name="check" value="<%=work._id %>">
+                                    <p class="items"><%= work[i] %></p>
+                                    <hr>
+                                    <% } %>
+                                <% } %>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <%-include("partials/script.ejs") %>
